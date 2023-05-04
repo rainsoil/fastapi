@@ -12,7 +12,7 @@ import java.io.InputStream;
  * 文件上传模板类
  *
  * @author luyanan
- * @since 2023/4/1/001
+ * @since 2023/4/1/01
  */
 @RequiredArgsConstructor
 public class FileTemplate {
@@ -51,7 +51,7 @@ public class FileTemplate {
      * @param path     文件路径
      * @param fileName 文件名
      * @return com.github.rainsoil.fastapi.common.core.file.FileInfoVo
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     public FileInfoVo upload(byte[] context, String path, String fileName) {
         
@@ -68,7 +68,7 @@ public class FileTemplate {
      * @param path        文件路径
      * @param fileName    文件名
      * @return com.github.rainsoil.fastapi.common.core.file.FileInfoVo
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     public FileInfoVo upload(InputStream inputStream, String path, String fileName) {
         byte[] bytes = IoUtil.readBytes(inputStream);
@@ -82,7 +82,7 @@ public class FileTemplate {
      * @param file 文件
      * @param path 文件路径
      * @return com.github.rainsoil.fastapi.common.core.file.FileInfoVo
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     @SneakyThrows
     public FileInfoVo upload(MultipartFile file, String path) {
@@ -96,7 +96,7 @@ public class FileTemplate {
      * @param path     文件路径
      * @param fileName 文件名
      * @return java.io.InputStream
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     public InputStream download(String path, String fileName) {
         FileProperties.FileClientProperties fileClientProperties = getFileClientProperties(name);

@@ -7,7 +7,7 @@ import lombok.experimental.Accessors;
  * 文件信息
  *
  * @author luyanan
- * @since 2023/4/1/001
+ * @since 2023/4/1/01
  */
 @Data
 @Accessors(chain = true)
@@ -16,7 +16,7 @@ public class FileInfoVo {
     /**
      * 相对路径
      *
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     
     private String relativePath;
@@ -25,7 +25,7 @@ public class FileInfoVo {
     /**
      * 文件的全路径
      *
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     
     private String url;
@@ -33,7 +33,7 @@ public class FileInfoVo {
     /**
      * 文件名
      *
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     
     private String name;

@@ -6,7 +6,7 @@ import java.io.InputStream;
  * 文件服务
  *
  * @author luyanan
- * @since 2023/4/1/001
+ * @since 2023/4/1/01
  */
 public interface IFileClientService {
     
@@ -18,7 +18,7 @@ public interface IFileClientService {
      * @param fileName             文件名
      * @param fileClientProperties 配置类
      * @return com.github.rainsoil.fastapi.common.core.file.FileInfoVo
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     FileInfoVo upload(byte[] context, String path, String fileName,
             FileProperties.FileClientProperties fileClientProperties);
@@ -31,7 +31,7 @@ public interface IFileClientService {
      * @param fileName             文件名
      * @param fileClientProperties 配置
      * @return java.io.InputStream
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     InputStream download(String path, String fileName, FileProperties.FileClientProperties fileClientProperties);
 }

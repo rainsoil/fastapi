@@ -10,11 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
     
     <groupId>com.github.rainsoil.fastapi.common</groupId>
-    <artifactId>rainsoil-common</artifactId>
+    <artifactId>fastapi-common</artifactId>
     <packaging>pom</packaging>
     <modules>
         <module>fastapi-dependencies</module>
-        <module>rainsoil-common-core</module>
+        <module>fastapi-common-core</module>
     </modules>
     
     <properties>

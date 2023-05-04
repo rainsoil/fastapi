@@ -4,7 +4,7 @@ package com.github.rainsoil.fastapi.common.core.file;
  * 文件名生成
  *
  * @author luyanan
- * @since 2023/4/1/001
+ * @since 2023/4/1/01
  */
 public interface FileNameGenerator {
     
@@ -16,7 +16,7 @@ public interface FileNameGenerator {
      * @param path     路径
      * @param fileName 文件名
      * @return java.lang.String
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     String generator(byte[] content, String path, String fileName);
     

@@ -10,7 +10,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.github.rainsoil.fastapi.web</groupId>
-	<artifactId>rainsoil-web</artifactId>
+	<artifactId>fastapi-web</artifactId>
 
 	<properties>
 		<maven.compiler.source>8</maven.compiler.source>
@@ -23,7 +23,7 @@
 
 		<dependency>
 			<groupId>com.github.rainsoil.fastapi.core</groupId>
-			<artifactId>rainsoil-core</artifactId>
+			<artifactId>fastapi-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>

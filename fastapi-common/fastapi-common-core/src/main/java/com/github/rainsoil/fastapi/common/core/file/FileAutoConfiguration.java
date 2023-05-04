@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * 文件服务自动化配置类
  *
  * @author luyanan
- * @since 2023/4/1/001
+ * @since 2023/4/1/01
  */
 @Configuration
 @EnableConfigurationProperties(FileProperties.class)
@@ -23,7 +23,7 @@ public class FileAutoConfiguration {
      * 文件名生成类
      *
      * @return com.github.rainsoil.fastapi.common.core.file.FileNameGenerator
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     @ConditionalOnMissingBean
     @Bean

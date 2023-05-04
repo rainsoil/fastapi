@@ -9,9 +9,9 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>rainsoil-common</module>
-        <module>rainsoil-core</module>
-        <module>rainsoil-web</module>
+        <module>fastapi-common</module>
+        <module>fastapi-core</module>
+        <module>fastapi-web</module>
     </modules>
     
     <properties>

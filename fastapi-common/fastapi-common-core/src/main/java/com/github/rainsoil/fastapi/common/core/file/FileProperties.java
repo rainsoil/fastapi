@@ -10,7 +10,7 @@ import java.util.Map;
  * 文件配置文件
  *
  * @author luyanan
- * @since 2023/4/1/001
+ * @since 2023/4/1/01
  */
 @Data
 @ConfigurationProperties(prefix = FileProperties.PREFIX)
@@ -21,7 +21,7 @@ public class FileProperties {
     /**
      * 文件的url的域名前缀
      *
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     private String fileDomain;
     
@@ -29,14 +29,14 @@ public class FileProperties {
      * 是否开启
      *
      * @author luyanan
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     private Boolean enable;
     
     /**
      * 默认客户端配置
      *
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     
     private FileClientProperties client;
@@ -46,7 +46,7 @@ public class FileProperties {
      * 当使用多个客户端的时候用此配置
      *
      * @author luyanan
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     private Map<String, FileClientProperties> clients = new HashMap<>();
     
@@ -68,7 +68,7 @@ public class FileProperties {
      * 文件客户端配置
      *
      * @author luyanan
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     @Data
     public static class FileClientProperties {
@@ -76,7 +76,7 @@ public class FileProperties {
         /**
          * 文件客户端类型
          *
-         * @since 2023/4/1/001
+         * @since 2023/4/1/01
          */
         
         private FileClientType type;
@@ -84,7 +84,7 @@ public class FileProperties {
         /**
          * Region
          *
-         * @since 2023/4/1/001
+         * @since 2023/4/1/01
          */
         
         private String endpoint;
@@ -92,7 +92,7 @@ public class FileProperties {
         /**
          * 客户端id
          *
-         * @since 2023/4/1/001
+         * @since 2023/4/1/01
          */
         
         private String accessKeyId;
@@ -101,7 +101,7 @@ public class FileProperties {
         /**
          * 客户端密钥
          *
-         * @since 2023/4/1/001
+         * @since 2023/4/1/01
          */
         
         private String accessKeySecret;
@@ -109,7 +109,7 @@ public class FileProperties {
         /**
          * Bucket 名称
          *
-         * @since 2023/4/1/001
+         * @since 2023/4/1/01
          */
         
         private String bucketName;
@@ -137,13 +137,13 @@ public class FileProperties {
      * 文件客户端类型
      *
      * @author luyanan
-     * @since 2023/4/1/001
+     * @since 2023/4/1/01
      */
     public enum FileClientType {
         /**
          * 本地上传
          *
-         * @since 2023/4/1/001
+         * @since 2023/4/1/01
          */
         
         LOCAL,
@@ -151,7 +151,7 @@ public class FileProperties {
          * 对象存储服务器
          *
          * @author luyanan
-         * @since 2023/4/1/001
+         * @since 2023/4/1/01
          */
         S3
     }

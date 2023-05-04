@@ -8,7 +8,7 @@ import cn.hutool.crypto.SecureUtil;
  * 文件名生成 文件md5生成
  *
  * @author luyanan
- * @since 2023/4/1/001
+ * @since 2023/4/1/01
  */
 public class SimpleFileNameGenerator implements FileNameGenerator {
     
