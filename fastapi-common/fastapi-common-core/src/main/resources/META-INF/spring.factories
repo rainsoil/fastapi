@@ -1,5 +1,6 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.github.rainsoil.fastapi.common.core.spring.SpringAutoConfiguration,\
   com.github.rainsoil.fastapi.common.core.mybatis.BaseMyBatisPlusConfiguration,\
-  com.github.rainsoil.fastapi.common.core.file.FileAutoConfiguration
+  com.github.rainsoil.fastapi.common.core.file.FileAutoConfiguration,\
+  com.github.rainsoil.fastapi.common.core.encryption.EncryptionConfiguration
 
