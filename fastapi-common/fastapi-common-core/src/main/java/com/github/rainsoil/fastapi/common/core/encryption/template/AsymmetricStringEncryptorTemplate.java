@@ -20,4 +20,7 @@ public class AsymmetricStringEncryptorTemplate extends BaseStringEncryptorTempla
 	protected EncryptionEnums support() {
 		return EncryptionEnums.ASYMMETRIC;
 	}
+
+
+
 }

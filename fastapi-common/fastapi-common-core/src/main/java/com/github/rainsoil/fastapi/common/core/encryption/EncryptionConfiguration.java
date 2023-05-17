@@ -6,7 +6,9 @@ import com.github.rainsoil.fastapi.common.core.encryption.impl.Sm4SymmetricStrin
 import com.github.rainsoil.fastapi.common.core.encryption.template.AsymmetricStringEncryptorTemplate;
 import com.github.rainsoil.fastapi.common.core.encryption.template.DigesterStringEncryptorTemplate;
 import com.github.rainsoil.fastapi.common.core.encryption.template.SymmetricStringEncryptorTemplate;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,6 +18,7 @@ import org.springframework.context.annotation.Configuration;
  * @author luyanan
  * @since 2023/05/06
  **/
+@EnableConfigurationProperties(EncryptorProperties.class)
 @Configuration
 public class EncryptionConfiguration {
 
@@ -26,7 +29,6 @@ public class EncryptionConfiguration {
 	 * @return com.github.rainsoil.fastapi.common.core.encryption.StringEncryptorStrategy
 	 * @since 2023/05/06
 	 */
-	@ConditionalOnMissingBean
 	@Bean("sm4Symmetric")
 	public StringEncryptorStrategy sm4SymmetricStringEncryptorStrategy() {
 		return new Sm4SymmetricStringEncryptorStrategy();
@@ -39,7 +41,6 @@ public class EncryptionConfiguration {
 	 * @return com.github.rainsoil.fastapi.common.core.encryption.StringEncryptorStrategy
 	 * @since 2023/05/06
 	 */
-	@ConditionalOnMissingBean
 	@Bean("sm3Digester")
 	public StringEncryptorStrategy sm3DigesterStringEncryptorStrategy() {
 		return new Sm3DigesterStringEncryptorStrategy();
@@ -52,7 +53,6 @@ public class EncryptionConfiguration {
 	 * @return com.github.rainsoil.fastapi.common.core.encryption.StringEncryptorStrategy
 	 * @since 2023/05/06
 	 */
-	@ConditionalOnMissingBean
 	@Bean("sm2Asymmetric")
 	public StringEncryptorStrategy sm2AsymmetricStringEncryptorStrategy() {
 		return new Sm2AsymmetricStringEncryptorStrategy();

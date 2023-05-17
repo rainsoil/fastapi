@@ -3,7 +3,9 @@ package com.github.rainsoil.fastapi.common.core.encryption;
 import cn.hutool.core.lang.Opt;
 import com.github.rainsoil.fastapi.common.core.encryption.impl.Sm2AsymmetricStringEncryptorStrategy;
 import com.github.rainsoil.fastapi.common.core.encryption.impl.Sm3DigesterStringEncryptorStrategy;
+import com.github.rainsoil.fastapi.common.core.encryption.impl.Sm4SymmetricStringEncryptorStrategy;
 import com.github.rainsoil.fastapi.common.core.spring.SpringContextHolder;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * 基础加解密类实现
@@ -13,6 +15,7 @@ import com.github.rainsoil.fastapi.common.core.spring.SpringContextHolder;
  **/
 public abstract class BaseStringEncryptorTemplate implements StringEncryptor {
 
+	@Autowired
 	private EncryptorProperties encryptorProperties;
 
 	private StringEncryptorStrategy strategy;
@@ -48,7 +51,7 @@ public abstract class BaseStringEncryptorTemplate implements StringEncryptor {
 			case SYMMETRIC:
 				encryptor = encryptorProperties.getSymmetricMap().get(method);
 				if (null == encryptor.getBean()) {
-					encryptor.setBean(Sm3DigesterStringEncryptorStrategy.class);
+					encryptor.setBean(Sm4SymmetricStringEncryptorStrategy.class);
 				}
 				break;
 			case ASYMMETRIC:
@@ -74,6 +77,7 @@ public abstract class BaseStringEncryptorTemplate implements StringEncryptor {
 	 */
 	@Override
 	public String encrypt(String message) {
+		switchover(null);
 		return this.strategy.encrypt(message, encryptor);
 	}
 
@@ -86,6 +90,7 @@ public abstract class BaseStringEncryptorTemplate implements StringEncryptor {
 	 */
 	@Override
 	public String decrypt(String encryptedMessage) {
+		switchover(null);
 		return this.strategy.decrypt(encryptedMessage, encryptor);
 	}
 }

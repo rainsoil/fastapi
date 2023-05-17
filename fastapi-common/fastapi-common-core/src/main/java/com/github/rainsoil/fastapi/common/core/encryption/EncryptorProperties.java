@@ -2,6 +2,7 @@ package com.github.rainsoil.fastapi.common.core.encryption;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @since 2023/05/06
  **/
 @Data
+@ConfigurationProperties("spring.encryptor")
 public class EncryptorProperties {
 
 	/**

@@ -17,8 +17,13 @@ spring:
       type: local
     enable: true
     file-domain: http://localhost:9999
+  encryptor:
+    asymmetric:
+      private-key: MIGTAgEAMBMGByqGSM49AgEGCCqBHM9VAYItBHkwdwIBAQQgDUjrX1U9xueSsmfvdVuyxHiWXRYrAfKwNWY9UJ76daagCgYIKoEcz1UBgi2hRANCAAR7Pqx/741S9NCOjP6f5go1KkfehJ5vTr3peuYxm9Q+SxLkusy+ZAawBzqSo2nB6xx+y8Hi0jYedhYzO10TGP2v
+      public-key: MFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAEez6sf++NUvTQjoz+n+YKNSpH3oSeb0696XrmMZvUPksS5LrMvmQGsAc6kqNpwescfsvB4tI2HnYWMztdExj9rw==
+    symmetric:
+      key: 12ab3456789udhty
 logging:
   level:
     com.github.rainsoil: debug
-
 
