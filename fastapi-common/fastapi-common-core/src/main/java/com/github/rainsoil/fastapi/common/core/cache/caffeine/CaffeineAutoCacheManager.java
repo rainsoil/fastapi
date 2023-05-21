@@ -93,6 +93,11 @@ public class CaffeineAutoCacheManager extends CaffeineCacheManager {
 		} else {
 			return cacheBuilder.expireAfterAccess(duration).build(cacheLoader);
 		}
+//		if (cacheLoader == null) {
+//			return cacheBuilder.expireAfterWrite(duration).build();
+//		} else {
+//			return cacheBuilder.expireAfterWrite(duration).build(cacheLoader);
+//		}
 	}
 
 }

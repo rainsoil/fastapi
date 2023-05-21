@@ -23,6 +23,8 @@ spring:
       public-key: MFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAEez6sf++NUvTQjoz+n+YKNSpH3oSeb0696XrmMZvUPksS5LrMvmQGsAc6kqNpwescfsvB4tI2HnYWMztdExj9rw==
     symmetric:
       key: 12ab3456789udhty
+  cache:
+    type: caffeine
 logging:
   level:
     com.github.rainsoil: debug
