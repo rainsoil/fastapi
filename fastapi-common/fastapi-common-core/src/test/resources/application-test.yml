@@ -25,6 +25,10 @@ spring:
       key: 12ab3456789udhty
   cache:
     type: caffeine
+  log:
+    enable: true
+    print: true
+    trace: true
 logging:
   level:
     com.github.rainsoil: debug

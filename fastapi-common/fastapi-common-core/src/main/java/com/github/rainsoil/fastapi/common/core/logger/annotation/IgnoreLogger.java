@@ -1,7 +1,5 @@
 package com.github.rainsoil.fastapi.common.core.logger.annotation;
 
-import org.checkerframework.common.value.qual.IntRange;
-
 import java.lang.annotation.*;
 
 /**

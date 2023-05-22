@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.rainsoil.fastapi.common.core.spring.SpringContextHolder;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
-import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 
 /**
  * json工具类

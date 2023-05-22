@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.github.benmanes.caffeine.cache.CacheLoader;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.CaffeineSpec;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.boot.convert.DurationStyle;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.lang.Nullable;

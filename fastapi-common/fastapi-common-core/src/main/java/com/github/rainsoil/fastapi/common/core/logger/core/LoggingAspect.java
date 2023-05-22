@@ -11,7 +11,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
-import org.springframework.util.StopWatch;
 
 import java.lang.reflect.Method;
 
@@ -32,7 +31,7 @@ public class LoggingAspect {
 	/**
 	 * 对注解进行拦截
 	 *
-	 * @param proceedingJoinPoint
+	 * @param proceedingJoinPoint proceedingJoinPoint
 	 * @return java.lang.Object
 	 * @since 2023/05/21
 	 */

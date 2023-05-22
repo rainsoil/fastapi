@@ -1,5 +1,6 @@
 package com.github.rainsoil.fastapi.common.core;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -11,5 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootApplication
 public class FastApiCoreApplicationTest {
+	public static void main(String[] args) {
 
+		SpringApplication.run(FastApiCoreApplicationTest.class, args);
+	}
 }

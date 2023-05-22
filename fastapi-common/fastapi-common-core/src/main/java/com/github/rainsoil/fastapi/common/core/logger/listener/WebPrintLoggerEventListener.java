@@ -1,12 +1,13 @@
 package com.github.rainsoil.fastapi.common.core.logger.listener;
 
-import cn.hutool.core.util.StrUtil;
+import com.github.rainsoil.fastapi.common.core.logger.config.LoggerProperties;
 import com.github.rainsoil.fastapi.common.core.logger.core.AbstractLoggerParserHandler;
 import com.github.rainsoil.fastapi.common.core.logger.core.LoggerEvent;
 import com.github.rainsoil.fastapi.common.core.logger.core.LoggerEventDto;
 import com.github.rainsoil.fastapi.common.core.logger.core.LoggerInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
 
@@ -18,6 +19,7 @@ import org.springframework.context.annotation.Configuration;
  **/
 @RequiredArgsConstructor
 @Slf4j
+@ConditionalOnProperty(prefix = LoggerProperties.PREFIX, value = "print", havingValue = "true", matchIfMissing = false)
 @Configuration(proxyBeanMethods = false)
 public class WebPrintLoggerEventListener extends AbstractLoggerParserHandler implements ApplicationListener<LoggerEvent> {
 	@Override

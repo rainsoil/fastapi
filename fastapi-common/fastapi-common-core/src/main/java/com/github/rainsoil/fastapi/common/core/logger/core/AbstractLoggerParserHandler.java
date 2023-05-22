@@ -40,6 +40,13 @@ public class AbstractLoggerParserHandler {
 	protected static final String DESP_DIVIDING_LINE = "-";
 
 
+	/**
+	 * 解析
+	 *
+	 * @param loggerEventDto loggerEventDto
+	 * @return com.github.rainsoil.fastapi.common.core.logger.core.LoggerInfo
+	 * @since 2023/05/22
+	 */
 	public LoggerInfo parserToLoggerInfo(LoggerEventDto loggerEventDto) {
 
 		if (null == loggerEventDto) {

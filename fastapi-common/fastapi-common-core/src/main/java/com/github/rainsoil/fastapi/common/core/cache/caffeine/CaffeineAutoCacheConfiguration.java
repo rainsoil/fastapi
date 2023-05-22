@@ -32,12 +32,32 @@ import java.util.stream.Collectors;
 @ConditionalOnClass({Caffeine.class, CaffeineCacheManager.class})
 @AutoConfigureBefore(CacheAutoConfiguration.class)
 public class CaffeineAutoCacheConfiguration {
+
+
+	/**
+	 * CacheManager  自定义
+	 *
+	 * @param customizers customizers
+	 * @return org.springframework.boot.autoconfigure.cache.CacheManagerCustomizers
+	 * @since 2023/05/22
+	 */
 	@Bean
 	@ConditionalOnMissingBean
 	public CacheManagerCustomizers cacheManagerCustomizers(ObjectProvider<CacheManagerCustomizer<?>> customizers) {
 		return new CacheManagerCustomizers(customizers.orderedStream().collect(Collectors.toList()));
 	}
 
+	/**
+	 * cacheManager
+	 *
+	 * @param cacheProperties cacheProperties
+	 * @param customizers     customizers
+	 * @param caffeine        caffeine
+	 * @param caffeineSpec    caffeineSpec
+	 * @param cacheLoader     cacheLoader
+	 * @return org.springframework.cache.CacheManager
+	 * @since 2023/05/22
+	 */
 	@Bean("cacheResolver")
 	public CacheManager cacheManager(CacheProperties cacheProperties,
 									 CacheManagerCustomizers customizers,
@@ -52,6 +72,16 @@ public class CaffeineAutoCacheConfiguration {
 		return customizers.customize(cacheManager);
 	}
 
+	/**
+	 * 创建 CaffeineAutoCacheManager
+	 *
+	 * @param cacheProperties cacheProperties
+	 * @param caffeine        caffeine
+	 * @param caffeineSpec    caffeineSpec
+	 * @param cacheLoader     cacheLoader
+	 * @return com.github.rainsoil.fastapi.common.core.cache.caffeine.CaffeineAutoCacheManager
+	 * @since 2023/05/22
+	 */
 	private static CaffeineAutoCacheManager createCacheManager(CacheProperties cacheProperties,
 															   ObjectProvider<Caffeine<Object, Object>> caffeine, ObjectProvider<CaffeineSpec> caffeineSpec,
 															   ObjectProvider<CacheLoader<Object, Object>> cacheLoader) {
@@ -61,6 +91,15 @@ public class CaffeineAutoCacheConfiguration {
 		return cacheManager;
 	}
 
+	/**
+	 * 设置CacheBuilder
+	 *
+	 * @param cacheProperties cacheProperties
+	 * @param caffeineSpec    caffeineSpec
+	 * @param caffeine        caffeine
+	 * @param cacheManager    cacheManager
+	 * @since 2023/05/22
+	 */
 	private static void setCacheBuilder(CacheProperties cacheProperties,
 										@Nullable CaffeineSpec caffeineSpec,
 										@Nullable Caffeine<Object, Object> caffeine,
