@@ -4,6 +4,7 @@ import lombok.experimental.UtilityClass;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import javax.validation.Validation;
 import javax.validation.Validator;
 import java.util.Set;
 
@@ -15,7 +16,7 @@ import java.util.Set;
  **/
 @UtilityClass
 public class BeanValidators {
-
+	public static final Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
 
 	/**
 	 * 对象属性校验
@@ -33,5 +34,15 @@ public class BeanValidators {
 
 	}
 
-
+	/**
+	 * 校验
+	 *
+	 * @param <T>    校验实体
+	 * @param target 实体类
+	 * @return java.util.Set<javax.validation.ConstraintViolation < T>>
+	 * @since 2023/05/28
+	 */
+	public static <T> Set<ConstraintViolation<T>> validate(T target) {
+		return VALIDATOR.validate(target);
+	}
 }
