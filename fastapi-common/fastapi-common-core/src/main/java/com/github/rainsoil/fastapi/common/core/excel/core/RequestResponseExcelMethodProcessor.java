@@ -25,6 +25,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
+import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.method.support.ModelAndViewContainer;
@@ -109,7 +110,8 @@ public class RequestResponseExcelMethodProcessor implements HandlerMethodArgumen
 	 */
 	private void writeWithMessageConverters(Object returnValue, MethodParameter parameter, NativeWebRequest webRequest) throws IOException {
 
-		HttpServletResponse response = webRequest.getNativeRequest(HttpServletResponse.class);
+
+		HttpServletResponse response = ((ServletWebRequest) webRequest).getResponse();
 		Assert.state(response != null, "No HttpServletResponse");
 		ServletOutputStream outputStream = response.getOutputStream();
 		ResponseExcelInfo responseExcelInfo = new ResponseExcelInfo(parameter.getMethodAnnotation(ResponseExcel.class));
