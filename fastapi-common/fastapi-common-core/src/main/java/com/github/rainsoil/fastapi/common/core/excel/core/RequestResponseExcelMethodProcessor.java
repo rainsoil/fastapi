@@ -4,17 +4,22 @@ import cn.hutool.core.lang.Opt;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelReader;
 import com.alibaba.excel.ExcelWriter;
+import com.alibaba.excel.converters.Converter;
+import com.alibaba.excel.read.builder.ExcelReaderBuilder;
 import com.alibaba.excel.read.metadata.ReadSheet;
 import com.alibaba.excel.support.ExcelTypeEnum;
+import com.alibaba.excel.write.builder.ExcelWriterBuilder;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.github.rainsoil.fastapi.common.core.PageRequest;
 import com.github.rainsoil.fastapi.common.core.excel.annotation.RequestExcel;
 import com.github.rainsoil.fastapi.common.core.excel.annotation.ResponseExcel;
+import com.github.rainsoil.fastapi.common.core.excel.conver.GlobalConverterRegister;
 import com.github.rainsoil.fastapi.common.core.excel.enums.Scene;
 import com.github.rainsoil.fastapi.common.core.excel.exception.EasyExcelException;
 import com.github.rainsoil.fastapi.common.core.excel.listener.CollectorReadListener;
 import com.github.rainsoil.fastapi.common.core.excel.module.RequestExcelInfo;
 import com.github.rainsoil.fastapi.common.core.excel.module.ResponseExcelInfo;
+import com.github.rainsoil.fastapi.common.core.spring.SpringContextHolder;
 import com.github.rainsoil.fastapi.common.core.validation.BeanValidators;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.core.MethodParameter;
@@ -43,10 +48,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.alibaba.excel.support.ExcelTypeEnum.CSV;
@@ -97,8 +99,10 @@ public class RequestResponseExcelMethodProcessor implements HandlerMethodArgumen
 	@Override
 	public void handleReturnValue(Object returnValue, MethodParameter returnType, ModelAndViewContainer mavContainer, NativeWebRequest webRequest) throws Exception {
 		mavContainer.setRequestHandled(true);
+
 		writeWithMessageConverters(returnValue, returnType, webRequest);
 	}
+
 
 	/**
 	 * 写入转换
@@ -138,7 +142,14 @@ public class RequestResponseExcelMethodProcessor implements HandlerMethodArgumen
 			if (CSV == responseExcelInfo.getSuffix()) {
 				outputStream.write(new byte[]{(byte) 0xef, (byte) 0xbb, (byte) 0xbf});
 			}
-			try (ExcelWriter excelWriter = EasyExcel.write(outputStream)
+			ExcelWriterBuilder builder = EasyExcel.write(outputStream);
+
+
+			List<Converter> converters = getConverters();
+			for (Converter converter : converters) {
+				builder.registerConverter(converter);
+			}
+			try (ExcelWriter excelWriter = builder
 					.charset(StandardCharsets.UTF_8).excelType(responseExcelInfo.getSuffix()).build()) {
 				List<WriteSheet> writeSheetList = responseExcelInfo.getSheetInfoList()
 						.stream()
@@ -162,6 +173,15 @@ public class RequestResponseExcelMethodProcessor implements HandlerMethodArgumen
 			}
 		}
 
+	}
+
+
+	private List<Converter> getConverters() {
+		GlobalConverterRegister register = SpringContextHolder.getBean(GlobalConverterRegister.class);
+		if (null != register) {
+			return register.getConverters().stream().collect(Collectors.toList());
+		}
+		return new ArrayList<>();
 	}
 
 
@@ -242,7 +262,12 @@ public class RequestResponseExcelMethodProcessor implements HandlerMethodArgumen
 		}
 
 		CollectorReadListener collectorReadListener = new CollectorReadListener();
-		try (ExcelReader excelReader = EasyExcel.read(is).excelType(excelTypeEnums).build()) {
+		ExcelReaderBuilder builder = EasyExcel.read(is);
+		List<Converter> converters = getConverters();
+		for (Converter converter : converters) {
+			builder.registerConverter(converter);
+		}
+		try (ExcelReader excelReader = builder.excelType(excelTypeEnums).build()) {
 			List<ReadSheet> readSheets = requestExcelInfo.getSheetInfoList().stream().map(sheetInfo -> EasyExcel.readSheet(sheetInfo.getIndex())
 					.head(sheetInfo.getHeadClazz())
 					.registerReadListener(collectorReadListener)
