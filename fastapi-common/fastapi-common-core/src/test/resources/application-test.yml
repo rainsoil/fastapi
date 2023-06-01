@@ -32,4 +32,5 @@ spring:
 logging:
   level:
     com.github.rainsoil: debug
-
+excel:
+  dict: true

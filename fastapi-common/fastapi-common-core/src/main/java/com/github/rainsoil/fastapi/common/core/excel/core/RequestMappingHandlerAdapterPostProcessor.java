@@ -63,6 +63,13 @@ public class RequestMappingHandlerAdapterPostProcessor implements BeanPostProces
 	}
 
 
+	/**
+	 * 是否支持
+	 *
+	 * @param bean 类
+	 * @return boolean
+	 * @since 2023/06/01
+	 */
 	private boolean supports(Object bean) {
 		return bean instanceof RequestMappingHandlerAdapter;
 	}

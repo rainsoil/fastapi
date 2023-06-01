@@ -10,7 +10,7 @@ import java.lang.annotation.*;
  **/
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
+@Target(ElementType.FIELD)
 @Documented
 public @interface ExcelDict {
 
