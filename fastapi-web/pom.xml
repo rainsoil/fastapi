@@ -53,7 +53,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>2.3.7.RELEASE</version>
 				<configuration>
-					<mainClass>com.github.rainsoil.fastapi.web.system.AppApplication</mainClass>
+					<mainClass>com.github.rainsoil.fastapi.web.AppApplication</mainClass>
 				</configuration>
 				<executions>
 					<execution>

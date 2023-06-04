@@ -43,7 +43,6 @@
 		<dependency>
 			<groupId>com.github.ben-manes.caffeine</groupId>
 			<artifactId>caffeine</artifactId>
-			<version>2.9.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -59,7 +58,6 @@
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
 			<artifactId>bcprov-jdk15to18</artifactId>
-			<version>1.69</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -78,7 +76,6 @@
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
-			<version>2.0.1.Final</version>
 		</dependency>
 
 		<dependency>
@@ -121,12 +118,7 @@
 		</dependency>
 
 
-		<!-- mybatis plus 联表关联-->
-		<dependency>
-			<groupId>com.github.yulichang</groupId>
-			<artifactId>mybatis-plus-join</artifactId>
-			<scope>provided</scope>
-		</dependency>
+
 
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -157,7 +149,6 @@
 		<dependency>
 			<groupId>io.swagger</groupId>
 			<artifactId>swagger-annotations</artifactId>
-			<version>1.5.22</version>
 			<scope>compile</scope>
 		</dependency>
 

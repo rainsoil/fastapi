@@ -15,7 +15,8 @@
     <modules>
         <module>fastapi-dependencies</module>
         <module>fastapi-common-core</module>
-    </modules>
+		<module>fastapi-security</module>
+	</modules>
     
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
