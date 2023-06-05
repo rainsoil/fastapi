@@ -9,8 +9,7 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.github.rainsoil.fastapi.common.security.core</groupId>
-	<artifactId>fastapi-security-core</artifactId>
+	<artifactId>fastapi-security-starter</artifactId>
 
 	<properties>
 		<maven.compiler.source>8</maven.compiler.source>
@@ -20,18 +19,19 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
+			<groupId>com.github.rainsoil.fastapi.common.security.core</groupId>
+			<artifactId>fastapi-security-core</artifactId>
 		</dependency>
+
+
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
 		</dependency>
 	</dependencies>
-
 </project>

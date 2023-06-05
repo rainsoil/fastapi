@@ -39,6 +39,11 @@
 
 		<dependencies>
 			<dependency>
+				<groupId>com.github.rainsoil.fastapi.common.security.core</groupId>
+				<artifactId>fastapi-security-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>io.swagger</groupId>
 				<artifactId>swagger-annotations</artifactId>
 				<version>${swagger.version}</version>
