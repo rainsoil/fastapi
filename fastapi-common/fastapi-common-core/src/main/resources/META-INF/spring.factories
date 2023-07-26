@@ -4,5 +4,6 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.github.rainsoil.fastapi.common.core.file.FileAutoConfiguration,\
   com.github.rainsoil.fastapi.common.core.encryption.EncryptionConfiguration,\
   com.github.rainsoil.fastapi.common.core.cache.caffeine.CaffeineAutoCacheConfiguration,\
-  com.github.rainsoil.fastapi.common.core.logger.config.LoggerAutoConfiguration
+  com.github.rainsoil.fastapi.common.core.logger.config.LoggerAutoConfiguration,\
+  com.github.rainsoil.fastapi.common.core.logger.trace.LoggerTraceAutoConfiguration
 

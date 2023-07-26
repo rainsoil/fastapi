@@ -26,7 +26,7 @@ public class BaseEntity implements Serializable {
 	/**
 	 * 租户号
 	 */
-
+	
 	@ApiModelProperty("租户号")
 	@TableField("tenant_id")
 	private String tenantId;

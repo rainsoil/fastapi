@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.github.rainsoil.fastapi.common.security.config.SpringSecurityAutoConfiguration
+

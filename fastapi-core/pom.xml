@@ -73,6 +73,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>com.github.rainsoil.fastapi.common.security.core</groupId>
+            <artifactId>fastapi-security-core</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

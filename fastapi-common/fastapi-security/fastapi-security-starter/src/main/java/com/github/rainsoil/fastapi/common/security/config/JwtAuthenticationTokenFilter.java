@@ -39,8 +39,11 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 			// 从cookie中获取
 			Cookie[] cookies =
 					request.getCookies();
-			Cookie cookie = Arrays.stream(cookies).filter(a -> a.getName().equals(headerKey)).findFirst().orElse(null);
-			token = Optional.ofNullable(cookie).map(a -> a.getValue()).orElse(null);
+			if (null != cookies && cookies.length > 0 ){
+				Cookie cookie = Arrays.stream(cookies).filter(a -> a.getName().equals(headerKey)).findFirst().orElse(null);
+				token = Optional.ofNullable(cookie).map(a -> a.getValue()).orElse(null);
+			}
+
 		}
 
 		if (!StringUtils.hasText(token)) {
@@ -51,7 +54,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
 			try {
 				LoginUser loginUser = tokenStore.readAccessToken(token);
-				if (loginUser != null && null != SecurityContextHolder.getContext().getAuthentication()) {
+				if (loginUser != null && null == SecurityContextHolder.getContext().getAuthentication()) {
 					UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(loginUser, null, loginUser.getAuthorities());
 					authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 					SecurityContextHolder.getContext().setAuthentication(authentication);

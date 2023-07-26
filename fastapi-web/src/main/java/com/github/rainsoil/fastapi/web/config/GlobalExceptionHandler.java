@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import java.text.MessageFormat;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -60,7 +61,7 @@ public class GlobalExceptionHandler {
 		String msg = defaultMessage;
 		if (NumberUtil.isNumber(defaultMessage)) {
 			code = Integer.valueOf(defaultMessage);
-			msg = getMessage(code, e, defaultMessage);
+			msg = getMessage(code, e, defaultMessage,null);
 		}
 		log.error("全局异常信息 code:{},ex={}", code, msg);
 		return R.failed(code, msg);
@@ -89,7 +90,7 @@ public class GlobalExceptionHandler {
 		String msg = defaultMessage;
 		if (NumberUtil.isNumber(defaultMessage)) {
 			code = Integer.valueOf(defaultMessage);
-			msg = getMessage(code, e, defaultMessage);
+			msg = getMessage(code, e, defaultMessage, null);
 		}
 		log.error("全局异常信息 code:{},ex={}", code, msg);
 		return R.failed(code, msg);
@@ -189,7 +190,7 @@ public class GlobalExceptionHandler {
 	/**
 	 * 全局异常.
 	 *
-	 * @param e  异常
+	 * @param e 异常
 	 * @return R
 	 */
 	@ExceptionHandler(Exception.class)
@@ -205,33 +206,47 @@ public class GlobalExceptionHandler {
 	 * @param code    消息码
 	 * @param e       异常
 	 * @param message 异常信息
+	 * @param args    参数
 	 * @return java.lang.String
 	 * @since 2023/4/4
 	 */
-	private String getMessage(Integer code, Exception e, String message) {
+	private String getMessage(Integer code, Exception e, String message, String... args) {
+
+		String i18nMessage = null;
 		try {
-			message = messageSource.getMessage(code + "", null, LocaleContextHolder.getLocale());
+			i18nMessage = messageSource.getMessage(code + "", null, LocaleContextHolder.getLocale());
 		} catch (NoSuchMessageException noSuchMessageException) {
-
 		}
 
-		if (StrUtil.isBlank(message)) {
-			message = e.getLocalizedMessage();
-
+		if (StrUtil.isNotBlank(i18nMessage) && i18nMessage.matches("\\{\\d\\}")) {
+			args = new String[]{message};
 		}
-		return message;
+
+		if (StrUtil.isBlank(i18nMessage) && args.length > 0) {
+			i18nMessage = args[0];
+		}
+		if (StrUtil.isBlank(i18nMessage)) {
+			i18nMessage = e.getLocalizedMessage();
+		}
+		if (null != args && args.length > 0) {
+			i18nMessage = MessageFormat.format(i18nMessage, args);
+		}
+		return i18nMessage;
+
 	}
+
 
 	/**
 	 * 获取提示语
 	 *
 	 * @param code 状态码
 	 * @param e    异常
+	 * @param args 参数
 	 * @return java.lang.String
 	 * @since 2023/4/4
 	 */
-	private String getMessage(Integer code, Exception e) {
-		return getMessage(code, e, null);
+	private String getMessage(Integer code, Exception e, String... args) {
+		return getMessage(code, e, e.getMessage(), args);
 	}
 
 }

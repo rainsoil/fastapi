@@ -19,6 +19,13 @@ public class LoggerEventDto implements Serializable {
 
 
 	/**
+	 * 类型
+	 *
+	 * @since 2023/06/06
+	 */
+
+	private String type;
+	/**
 	 * 返回结果
 	 *
 	 * @author luyanan

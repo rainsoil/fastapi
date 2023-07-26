@@ -32,15 +32,28 @@
 		<bcprov-jdk15to18.version>1.69</bcprov-jdk15to18.version>
 		<validation-api.version>2.0.1.Final</validation-api.version>
 		<swagger.version>1.5.22</swagger.version>
+		<jjwt.version>0.9.0</jjwt.version>
 	</properties>
 
 
 	<dependencyManagement>
 
 		<dependencies>
+
+			<!--JWT工具依赖-->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt</artifactId>
+				<version>${jjwt.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>com.github.rainsoil.fastapi.common.security.core</groupId>
 				<artifactId>fastapi-security-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.rainsoil.fastapi.common.security</groupId>
+				<artifactId>fastapi-security-starter</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -136,11 +149,7 @@
 				<artifactId>jasypt-spring-boot-starter</artifactId>
 				<version>${jasypt.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.bouncycastle</groupId>
-				<artifactId>bcprov-jdk15on</artifactId>
-				<version>${bcprov-jdk15on.version}</version>
-			</dependency>
+
 			<dependency>
 				<groupId>com.github.rainsoil.fastapi.common.core</groupId>
 				<artifactId>fastapi-common-core</artifactId>

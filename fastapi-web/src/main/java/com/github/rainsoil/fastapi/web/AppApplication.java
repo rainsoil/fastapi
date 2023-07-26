@@ -1,5 +1,6 @@
 package com.github.rainsoil.fastapi.web;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,7 +10,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author luyanan
  * @since 2023/4/4
  **/
-@SpringBootApplication
+@MapperScan("com.github.rainsoil.fastapi.system.mapper")
+@SpringBootApplication(scanBasePackages = {
+		"com.github.rainsoil.fastapi.core",
+		"com.github.rainsoil.fastapi.system",
+		"com.github.rainsoil.fastapi.web"
+})
 public class AppApplication {
 
 

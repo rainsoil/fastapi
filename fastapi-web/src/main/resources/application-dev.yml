@@ -4,7 +4,10 @@ jasypt:
     password: k0fek3wnux55pf6z
 spring:
   datasource:
-    driver-class-name: org.apache.ibatis.datasource.unpooled.UnpooledDataSource.DriverProxy
-    username: ENC(a44625760f8fc68e8d3c6e3f18f898cd)
-    password: ENC(a44625760f8fc68e8d3c6e3f18f898cd)
-    url: ENC(a44625760f8fc68e8d3c6e3f18f898cd)
+    username: fastapi
+    password: DoAyv0VkoSOZACd
+    url: jdbc:mysql://${fastMysql}:13306/fastapi?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+logging:
+  level:
+    com.github.rainsoil.fastapi: debug

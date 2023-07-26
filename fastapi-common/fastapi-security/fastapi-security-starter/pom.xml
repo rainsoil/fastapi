@@ -18,6 +18,11 @@
 
 
 	<dependencies>
+
+		<dependency>
+			<groupId>com.github.rainsoil.fastapi.common.core</groupId>
+			<artifactId>fastapi-common-core</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.github.rainsoil.fastapi.common.security.core</groupId>
 			<artifactId>fastapi-security-core</artifactId>
@@ -32,6 +37,12 @@
 		<dependency>
 			<groupId>jakarta.servlet</groupId>
 			<artifactId>jakarta.servlet-api</artifactId>
+		</dependency>
+
+		<!--JWT工具依赖-->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
 		</dependency>
 	</dependencies>
 </project>

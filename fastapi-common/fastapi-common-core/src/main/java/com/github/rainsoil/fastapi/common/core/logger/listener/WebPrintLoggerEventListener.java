@@ -54,6 +54,6 @@ public class WebPrintLoggerEventListener extends AbstractLoggerParserHandler imp
 			sb.append("errorMsg:").append(loggerInfo.getErrorMsg()).append("\n");
 		}
 		sb.append("------------------------------]");
-		log.debug(sb.toString());
+		log.info(sb.toString());
 	}
 }

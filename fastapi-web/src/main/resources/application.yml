@@ -1,7 +1,75 @@
 spring:
   profiles:
     active: dev
+  mvc:
+    format:
+      date-time: yyyy-MM-dd HH:mm:ss
+      date: dd/MM/yyyy
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  messages:
+    basename: i18n/messages
+
+  flyway:
+    ## 如果启动的时候需要flyway管理sql脚本的话，将enabled设置为true
+    enabled: true
+    #  如果数据库不是空表，需要设置成 true，否则启动报错
+    baseline-on-migrate: true
+    # 验证错误时 是否自动清除数据库 高危操作
+    clean-on-validation-error: false
+    encoding: utf-8
+  encryptor:
+    asymmetric:
+      private-key: MIGTAgEAMBMGByqGSM49AgEGCCqBHM9VAYItBHkwdwIBAQQgDUjrX1U9xueSsmfvdVuyxHiWXRYrAfKwNWY9UJ76daagCgYIKoEcz1UBgi2hRANCAAR7Pqx/741S9NCOjP6f5go1KkfehJ5vTr3peuYxm9Q+SxLkusy+ZAawBzqSo2nB6xx+y8Hi0jYedhYzO10TGP2v
+      public-key: MFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAEez6sf++NUvTQjoz+n+YKNSpH3oSeb0696XrmMZvUPksS5LrMvmQGsAc6kqNpwescfsvB4tI2HnYWMztdExj9rw==
+    symmetric:
+      key: 12ab3456789aencf
+    digester:
+      key: 12ab3456789aencf
+  security:
+    token:
+      sign-key: qwtfdfdfd54564
+  log:
+    enable: true
+    trace: true
+    print: true
+  datasource:
+    hikari:
+      connection-timeout: 60000
+      validation-timeout: 3000
+      idle-timeout: 60000
+      login-timeout: 5
+      max-lifetime: 60000
+      maximum-pool-size: 10
+      minimum-idle: 10
+      read-only: false
 
 jasypt:
   encryptor:
     bean: sm4StringEncryptor
+server:
+  port: 9005
+  undertow:
+    threads:
+      io: 1000
+      worker: 8000
+    buffer-size: 1024
+    direct-buffers: true
+
+mybatis-plus:
+  tenant-enable: ture
+  mapper-locations: classpath:/mapper/*/*Mapper.xml
+  global-config:
+    banner: false
+    db-config:
+      db-type: mysql
+      id-type: auto
+      insert-strategy: not_empty
+      update-strategy: not_empty
+      where-strategy: not_empty
+      logic-delete-field: del_flag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    jdbc-type-for-null: null

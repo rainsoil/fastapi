@@ -56,6 +56,15 @@ public class LoginUser implements UserDetails {
 
 	private List<String> roleCodes;
 
+
+	/**
+	 * 角色id集合
+	 *
+	 * @since 2023/06/23
+	 */
+
+	private List<Long> roleIds;
+
 	/**
 	 * 授权
 	 *

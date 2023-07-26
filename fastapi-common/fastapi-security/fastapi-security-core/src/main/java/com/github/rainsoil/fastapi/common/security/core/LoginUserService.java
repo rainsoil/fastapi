@@ -1,7 +1,5 @@
 package com.github.rainsoil.fastapi.common.security.core;
 
-import org.springframework.security.core.parameters.P;
-
 import java.util.Optional;
 
 /**

@@ -53,6 +53,7 @@ public class AbstractLoggerParserHandler {
 			return null;
 		}
 
+		loggerEventDto.setType("web");
 		Signature signature = loggerEventDto.getSignature();
 		Method method = null;
 		IgnoreLogger ignoreLogger = null;

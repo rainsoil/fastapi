@@ -9,6 +9,7 @@ import com.github.rainsoil.fastapi.common.core.encryption.template.SymmetricStri
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 /**
  * 加解密自动化配置类
@@ -18,6 +19,7 @@ import org.springframework.context.annotation.Configuration;
  **/
 @EnableConfigurationProperties(EncryptorProperties.class)
 @Configuration
+@Order(value = -2147483647)
 public class EncryptionConfiguration {
 
 

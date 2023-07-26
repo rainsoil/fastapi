@@ -31,7 +31,7 @@ public class SpringSecurityProperties {
 	 * @since 2023/06/05
 	 */
 
-	private TokenProperties token;
+	private TokenProperties token = new TokenProperties();
 
 	/**
 	 * token的配置文件
@@ -57,7 +57,7 @@ public class SpringSecurityProperties {
 		 * @since 2023/06/05
 		 */
 
-		private String headerKey;
+		private String headerKey = "Authorization";
 		/**
 		 * 加密的密钥
 		 *
